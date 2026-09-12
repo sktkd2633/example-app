@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController; 
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,3 +19,11 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('post/create',[PostController::class,'create']);
+
+Route::post('post',[PostController::class,'store'])
+->name('post.store');
+
+Route::get('post',[PostController::class, 'index']);
+
